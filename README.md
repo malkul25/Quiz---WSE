@@ -1,4 +1,4 @@
-#Zaliczenie przedmiotu Narzędzia procesu tworzenia oprogramowania - Informatyka Stosowana WSE 2024
+# Zaliczenie przedmiotu Narzędzia procesu tworzenia oprogramowania - Informatyka Stosowana WSE 2024
 
 **Wykonała: Małgorzata Kulik**
 Repozytorium zawiera aplikacje zaliczeniową wykonaną w jezyku C
