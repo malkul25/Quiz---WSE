@@ -1,5 +1,79 @@
 #include <stdio.h>
 
+struct element
+{
+    char poprawna, odczytana;
+    struct element* nast;
+};
+
+typedef struct element ELEMENT;
+typedef ELEMENT* ADRES;
+
+ADRES dodajDoListyP (ADRES pocz, char poprawna)
+{
+    ADRES pom;
+    pom = (ADRES)malloc(sizeof(ELEMENT));
+    pom -> poprawna=poprawna;
+    if(pocz == NULL)
+        pom -> nast=NULL;
+    else
+        pom -> nast=pocz;
+    return pom;
+}
+
+void wypiszListeP (ADRES pocz)
+{
+     ADRES biez=pocz;
+    while(biez!=NULL)
+    {
+        printf("%c ", biez->poprawna);
+        biez = biez->nast;
+    }
+}
+
+ADRES dodajDoListyO (ADRES pocz, char odczytana)
+{
+    ADRES pom;
+    pom = (ADRES)malloc(sizeof(ELEMENT));
+    pom->odczytana=odczytana;
+    if(pocz == NULL)
+        pom -> nast=NULL;
+    else
+        pom -> nast=pocz;
+    return pom;
+}
+
+void wypiszListeO(ADRES pocz)
+{
+     ADRES biez=pocz;
+    while(biez!=NULL)
+    {
+        printf("%c ", biez->odczytana);
+        biez = biez->nast;
+    }
+}
+
+void czyscListeP(ADRES pocz)
+{
+    ADRES pom;
+    while (pocz!=NULL)
+    {
+        pom=pocz->nast;
+        free(pocz);
+        pocz=pom;
+    }
+}
+void czyscListeO(ADRES pom)
+{
+    ADRES pocz;
+    while (pom!=NULL)
+    {
+        pocz=pom->nast;
+        free(pom);
+        pom=pocz;
+    }
+}
+
 int main()
 {
 
