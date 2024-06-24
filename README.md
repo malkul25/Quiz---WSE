@@ -1,10 +1,8 @@
-**#Zaliczenie przedmiotu Narzędzia procesu tworzenia oprogramowania - Informatyka Stosowana WSE 2024**
+#**Zaliczenie przedmiotu Narzędzia procesu tworzenia oprogramowania - Informatyka Stosowana WSE 2024**
 **Wykonała: Małgorzata Kulik**
 Repozytorium zawiera aplikacje zaliczeniową wykonaną w jezyku C
 Aby uruchomić aplikacje należy
 
-    Pobrać z repozytorium github za pomocą git clone lub bezpośrednio ze strony repozytorium
-    Program dziala na mikrokontrolerze Arduino - aby aplikacja działała poprawnie należy ją skompilować na tym urządzeniu.
 
 Kontakt e-mail: gosia.kulik222@gmail.com
 
