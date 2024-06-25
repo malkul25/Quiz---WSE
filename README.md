@@ -19,7 +19,7 @@ Zawiera standardową bibliotekę <stdio.h>.
 - **void czyscListeP(ADRES pocz)** - funkcja odpowiada za wyczyszczenie listy poprawnie udzielonych odpowiedzi;
 - **void czyscListeO(ADRES pocz)** - odpowiada za wyczyszczenie listy odczytanych odpowiedzi;
 
- W funkcji main zaimplementowany jest cały quiz oraz wywoływane są wyżej wymienione funkcje.
+ W funkcji main zaimplementowany jest cały quiz.
 
 ### **Uruchomienie aplikacji**
 Aby uruchomić aplikację należy pobrać plik main.c oraz plik pytania.txt z [repozytorium](https://github.com/malkul25/Quiz---WSE). Należy zapisać oba pliki w tym samym folderze, następnie za pomocą kompilator GCC skompilować kod.
