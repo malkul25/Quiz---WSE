@@ -1,49 +1,49 @@
 #include <stdio.h>
 
-struct element
+struct element                    //deklaracja struktury element
 {
     char poprawna, odczytana;
     struct element* nast;
-};
+};                                //koniec struktury
 
 typedef struct element ELEMENT;
-typedef ELEMENT* ADRES;
+typedef ELEMENT* ADRES;  
 
-ADRES dodajDoListyP (ADRES pocz, char poprawna)
+ADRES dodajDoListyP (ADRES pocz, char poprawna)   //dodaje poprawną odpowiedź do listy 
 {
-    ADRES pom;
+    ADRES pom;                                    //pom - zmienna pomocnicza typu ADRES, pocz - początek typu ADRES, poprawna - zmienna przechowująca poprawną odpowiedź
     pom = (ADRES)malloc(sizeof(ELEMENT));
     pom -> poprawna=poprawna;
     if(pocz == NULL)
         pom -> nast=NULL;
     else
         pom -> nast=pocz;
-    return pom;
+    return pom;                                    //zwraca listę poprawnych odpowiedzi szczytanych z pliku
 }
 
-void wypiszListeP (ADRES pocz)
+void wypiszListeP (ADRES pocz)        //wypisuje listę poprawnych odpowiedzi
 {
-     ADRES biez=pocz;
+     ADRES biez=pocz;                   //pocz - początek, biez - bieżąca, obie zmienene typu ADRES
     while(biez!=NULL)
     {
         printf("%c ", biez->poprawna);
         biez = biez->nast;
     }
-}
+}                                        //nic nie zwraca
 
-ADRES dodajDoListyO (ADRES pocz, char odczytana)
+ADRES dodajDoListyO (ADRES pocz, char odczytana)  //dodaje do listy odpowiedzi udzielone przez użytkownika
 {
-    ADRES pom;
+    ADRES pom;                                    //pom - zmienna pomocnicza, pocz - początek, odczytana
     pom = (ADRES)malloc(sizeof(ELEMENT));
     pom->odczytana=odczytana;
     if(pocz == NULL)
         pom -> nast=NULL;
     else
         pom -> nast=pocz;
-    return pom;
+    return pom;                                   //zwraca wartość zmiennej pomocniczej
 }
 
-void wypiszListeO(ADRES pocz)
+void wypiszListeO(ADRES pocz)   //tworzy listę odpowiedzi udzielonych przez użytkownika
 {
      ADRES biez=pocz;
     while(biez!=NULL)
@@ -51,9 +51,9 @@ void wypiszListeO(ADRES pocz)
         printf("%c ", biez->odczytana);
         biez = biez->nast;
     }
-}
+}                               //nic nie zwraca
 
-void czyscListeP(ADRES pocz)
+void czyscListeP(ADRES pocz)   //czyści listę poprawnych odpowiedzi
 {
     ADRES pom;
     while (pocz!=NULL)
@@ -62,17 +62,18 @@ void czyscListeP(ADRES pocz)
         free(pocz);
         pocz=pom;
     }
-}
-void czyscListeO(ADRES pom)
+}                //nic nie zwraca
+
+void czyscListeO(ADRES pom)    //czyści listę odpowiedzi udzielonych przez użytkownika
 {
-    ADRES pocz;
+    ADRES pocz;                //pom - pomocnicza zmienna, pocz - początek
     while (pom!=NULL)
     {
         pocz=pom->nast;
         free(pom);
         pom=pocz;
     }
-}
+}                            //nic nie zwraca
 
 int main()
 {
@@ -80,7 +81,7 @@ int main()
     int menu=0;
     FILE *plik;
     char pytania[] = "pytania.txt";
-    char tresc[100], odpA[50], odpB[50], odpC[50], odpD[50], puste[100];
+    char tresc[100], odpA[50], odpB[50], odpC[50], odpD[50], puste[100];  //zdefiniowanie buforów
     char poprawna, odczytana;
     int punkty=0, i=0;
 
@@ -101,20 +102,20 @@ int main()
     }while(menu>=3 || menu==0);
         switch(menu)
         {
-            case 1: fopen(pytania,"rt"); break;
+            case 1: fopen(pytania,"rt"); break;        //po wybraniu 1. w menu otwiera plik tekstowy
             case 2: printf("Koniec quizu\n"); exit(0); break;
         }
 
 
-   plik = fopen(pytania, "rt");
+   plik = fopen(pytania, "rt"); //otwarcie pliku do odczytu
     if (!plik)
     {
-        printf("Nie mozna otworzyc pytan! %s\n", pytania);
-        return 0;
+        printf("Nie mozna otworzyc pytan! %s\n", pytania);  //sprawdza, czy plik istnieje
+        return -1;
     }
         for(i=0;i<=4;i++)
-        {
-            fgets(puste,100,plik);  puts(puste);
+        {            //wprowadzenie tekstu z pliku i wyświetenie
+            fgets(puste,100,plik);  puts(puste);     
             fgets(tresc,100,plik);  puts(tresc);
             fgets(odpA,50,plik);    puts(odpA);
             fgets(odpB,50,plik);    puts(odpB);
@@ -135,14 +136,14 @@ int main()
                 printf("\n\tO nie! Nie udalo Ci sie! Poprawna odpowiedz to %c.\n", poprawna);
         }
 
-    fclose(plik);
+    fclose(plik);                                  //zamkniecię pliku tekstowego
 
 
         if(punkty==5)
             printf("\n\t%d/5!\n\tWysmienicie, jestes prawdziwym fanem!\n", punkty);
         if(punkty==4 || punkty==3)
             printf("\n\t%d/5!\n\tNiezle!\n",punkty);
-        if(punkty==1||punkty==2)
+        if(punkty==1||punkty==2)                                                        //wyświetlanie wyników
             printf("\n\t%d/5!\n\tNie poszlo Ci najlepiej!\n",punkty);
         if(punkty==0)
         printf("\n\t%d/5!\n\tPrzykro mi, musisz sie jeszcze podszkolic!\n", punkty);
